@@ -3,7 +3,7 @@
  */
 
 const fileSystem = require('fs');
-const year = parseInt(fileSystem.readFileSync(0).toString().split(' '));
+const year = Number(fileSystem.readFileSync(0).toString().split(' '));
 const isLeapYear = ((year % 4 === 0) && (year % 100 !== 0)) || (year % 400 === 0);
 
 if(isLeapYear) {

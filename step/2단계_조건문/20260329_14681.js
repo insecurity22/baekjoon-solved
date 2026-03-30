@@ -13,8 +13,8 @@
 const fileSystem = require('fs');
 const input = fileSystem.readFileSync('./index.txt').toString().split('\n');
 
-const x = parseInt(input[0]);
-const y = parseInt(input[1]);
+const x = Number(input[0]);
+const y = Number(input[1]);
 
 const isPositiveX = x > 0;
 const isPositiveY = y > 0;

@@ -3,7 +3,7 @@
  */
 
 const fileSystem = require('fs');
-const score = parseInt(fileSystem.readFileSync(0).toString().trim());
+const score = Number(fileSystem.readFileSync(0).toString().trim());
 
 if(90 <= score && score <= 100) {
     console.log("A");

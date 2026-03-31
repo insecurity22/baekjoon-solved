@@ -50,3 +50,21 @@ const out = [];
 for (let i = 1; i <= 1000000; i++) out.push(String(i));
 process.stdout.write(out.join("\n"));
 ```
+
+## 6) 배열에 문자열을 `push`하고 `join`으로 한 번에 출력
+
+- 반복문에서 바로 `console.log`를 호출하지 않고, 문자열을 배열에 `push` 해 두었다가 마지막에 `join`으로 한 번에 묶어서 출력할 수 있습니다.
+- 별 찍기(2438번)처럼 줄마다 문자열을 만들어야 하는 경우, `"*".repeat(i)`로 한 줄을 만들고 배열에 `push` 한 뒤, `join("\n")`으로 줄바꿈을 붙여 한 번에 출력하면 깔끔합니다.
+
+```js
+// 예: 2438번 풀이 아이디어
+const fs = require("fs");
+const N = Number(fs.readFileSync("./input.txt").toString().trim());
+
+const lines = [];
+for (let i = 1; i <= N; i++) {
+  lines.push("*".repeat(i));
+}
+
+console.log(lines.join("\n"));
+```

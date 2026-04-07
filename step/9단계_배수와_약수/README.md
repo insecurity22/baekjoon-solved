@@ -26,3 +26,31 @@ for (let i = 1; i <= n; i++) {
 }
 console.log(result);
 ```
+
+## 2) 소수 개수 세기 (`1978번`)
+
+- `0`, `1`은 소수가 아니므로 제외하고, 주어진 수들 중 소수인 것만 판별하여 세면 됩니다.
+- 합성수는 `2` 이상의 약수를 하나라도 가지므로, 약수 개수를 끝까지 셀 필요 없이 나누어떨어지는 수가 나오면 즉시 합성수로 판별할 수 있습니다.
+- 반복은 `2`부터 √n까지만 하면 됩니다 (`i * i <= number`). 약수는 쌍으로 존재하므로 작은 쪽만 확인하면 큰 쪽은 자동으로 판별됩니다. `n`이 커질수록 `i < number` 전체 순회보다 훨씬 빠릅니다.
+- 초기에 `0`으로 나머지를 구하는 연산(`% 0`)은 정의되지 않아 `NaN`이 되므로, 약수를 `0`이나 `1`부터 세는 방식은 피하는 것이 좋습니다.
+- 소수 판별을 `isPrime`처럼 함수로 두면 읽기 쉽고 다른 문제에서도 재사용하기 좋습니다.
+
+```js
+function isPrime(number) {
+  if (number < 2) return false;
+
+  for (let i = 2; i * i <= number; i++) {
+    const isDivisor = number % i === 0;
+    if (isDivisor) {
+      return false;
+    }
+  }
+  return true;
+}
+
+let primeCount = 0;
+for (let i = 0; i < numberCount; i++) {
+  if (isPrime(numberArr[i])) primeCount++;
+}
+console.log(primeCount);
+```
